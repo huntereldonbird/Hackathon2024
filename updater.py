@@ -15,7 +15,7 @@ def increment_contents():
         # Increment the contents in parentheses
         count = int(label.split(' ')[-1])
         count += 3
-        print(f"success -> count = {count}")
+        print(f"success -> count{i} = {count}")
         # Update the label with the incremented count
         new_label = label.split(' ')[0] + ' ' + str(count)
 
