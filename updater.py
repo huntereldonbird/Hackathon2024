@@ -13,11 +13,11 @@ def increment_contents():
         label = label.replace("'", "")
 
         # Increment the contents in parentheses
-        count = int(label.split(' ')[-1])
+        count = int(label.split('|')[-1])
         count += 1
         print(f"success -> count{i} = {count}")
         # Update the label with the incremented count
-        new_label = label.split(' ')[0] + ' ' + str(count)
+        new_label = label.split('|')[0] + '|' + str(count)
 
         # Write the updated label and coordinates back to the file
         lines[i] = new_label + ',' + latitude + ',' + longitude + '\n'
