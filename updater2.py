@@ -14,12 +14,12 @@ def increment_contents():
         label = label.replace("'", "")
 
         # Increment the contents in parentheses
-        networkips = NetworkDetecter.scan_network()
-        count = len(networkips) - 2
+        count = NetworkDetecter.get_number()
+        
         
         print(f"success -> count{i} = {count}")
         # Update the label with the incremented count
-        new_label = label.split(' ')[0] + ' ' + str(count)
+        new_label = label.split(' ')[0] + ' ' + str()
 
         # Write the updated label and coordinates back to the file
         lines[i] = new_label + ',' + latitude + ',' + longitude + '\n'

@@ -12,13 +12,7 @@ def scan_network():
             devices.append((ip))
     return devices
 
-
-
-
-
-print(scan_network())
-
-
-tmp = scan_network()
-
-print(len(tmp) - 2)
+def get_number():
+    net = scan_network()
+    count = len(net) - 2
+    return count
