@@ -31,6 +31,8 @@ while True:
     time.sleep(2)
 
 
+
+# RUN THIS FILE AS 'python updater.py "192.168.0.1/24"'
 if __name__ == "__main__":
     arg = sys.argv[1]
     print(arg)
