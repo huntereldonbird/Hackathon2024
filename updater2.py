@@ -10,9 +10,6 @@ def increment_contents():
         # Split the line into label and coordinates
         label, latitude, longitude = line.strip().split(',')
 
-        # Remove any single quotes from the label
-        label = label.replace("'", "")
-
         # Increment the contents in parentheses
         count = NetworkDetecter.get_number()
         
