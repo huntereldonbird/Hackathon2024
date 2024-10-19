@@ -1,4 +1,4 @@
-import time, subprocess;
+import time, subprocess, sys
 
 
 # scans individual network
@@ -17,7 +17,7 @@ def scan_network():
 
 # Get devices from spesific AP 
 # Net is the 192.168.0.1/24 so if you want to use this function it is the same 
-def Get_Devices_From_AP(net):
+def Get_Devices_From_AP(net: str):
     devices = []
     result = subprocess.run(["sudo", "arp-scan", net], capture_output=True, text=True)
 
@@ -31,12 +31,13 @@ def Get_Devices_From_AP(net):
     return devices
 
 
-
-def get_count(net):
+# Get the actual count of the network
+def get_count(net: str):
     net = Get_Devices_From_AP(net)
     count = len(net) - 2
     return count
 
 
 print(get_count("192.168.0.1/24"))
+
 
