@@ -9,9 +9,10 @@ def scan_network():
             parts = line.split()
             ip = parts[0]
             mac = parts[1]
-            devices.append((ip, mac))
+            devices.append((ip))
     return devices
 
-
-
-print(scan_network())
+def get_number():
+    net = scan_network()
+    count = len(net) - 2
+    return count
