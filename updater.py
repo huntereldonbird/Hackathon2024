@@ -25,7 +25,7 @@ def increment_contents():
     with open('labels.txt', 'w') as file:
         file.writelines(lines)
 
-# Run the increment function every 5 seconds
+# Run the increment function every 2 seconds
 while True:
     increment_contents()
     time.sleep(2)
