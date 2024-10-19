@@ -72,7 +72,7 @@ function updateLabelsFromFile(filePath) {
                 const [name, lat, lng, inside] = line.split(',');
                 if (name && lat && lng) {  
                     var color = "#BDE7BD";
-                    if(name.replace("|","").split(" ")[1] > 7) {color = "#FFB6B3";}
+                    if(name.replace("|","").split(" ")[1] > 3) {color = "#FFB6B3";}
                     addFixedBuildingLabel(parseFloat(lat), parseFloat(lng), name.replace("|",""), inside.replace("|",""), color).addTo(map);
                 }
             });
