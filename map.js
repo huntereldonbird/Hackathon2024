@@ -14,13 +14,26 @@ map.getPane('fixedLabels').style.pointerEvents = 'none';
 // Store all label markers
 var labelMarkers = [];
 
+
 // Function to add fixed building labels
-function addFixedBuildingLabel(lat, lng, text, insideText) {
+function addFixedBuildingLabel(lat, lng, text, insideText, color) {
+
     var labelIcon = L.divIcon({
         className: 'building-label',
-        html: text,
-        iconSize: [55, 35],
-        iconAnchor: [50, 10]
+        html:  `
+        <div style="
+            width: 100%; 
+            height: 100%; 
+            border-radius: 5px; 
+            text-align: center;
+            background-color: ${color};
+            ">
+            ${text} ppl 
+        </div>
+    `,
+        iconSize: [70, 45],
+        iconAnchor: [50, 10],
+        
     });
 
     var marker = L.marker([lat, lng], {
@@ -57,8 +70,10 @@ function updateLabelsFromFile(filePath) {
             const lines = data.split('\n');
             lines.forEach(line => {
                 const [name, lat, lng, inside] = line.split(',');
-                if (name && lat && lng) {
-                    addFixedBuildingLabel(parseFloat(lat), parseFloat(lng), name.replace("|",""), inside.replace("|","")).addTo(map);
+                if (name && lat && lng) {  
+                    var color = "#BDE7BD";
+                    if(name.replace("|","").split(" ")[1] > 7) {color = "#FFB6B3";}
+                    addFixedBuildingLabel(parseFloat(lat), parseFloat(lng), name.replace("|",""), inside.replace("|",""), color).addTo(map);
                 }
             });
         })
