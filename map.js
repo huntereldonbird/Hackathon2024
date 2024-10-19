@@ -63,9 +63,9 @@
 
         // The rest of your code (GeoJSON handling, etc.) remains unchanged
         var geoJsonLayer;
-
+        /*
         function updateGeoJson() {
-            fetch('https://maps.byui.edu/portal/home/search.html?restrict=false&sortField=relevance&sortOrder=desc&searchTerm=owner%3A%22portaladmin%22&focus=layers-weblayers-features#content')
+            fetch('https://maps.byui.edu/portal/sharing/content/items/5e87a8a24ead45a9ad3ed37067b6bbfa/data')
                 .then(response => response.json())
                 .then(data => {
                     if (geoJsonLayer) {
@@ -91,6 +91,7 @@
 
         // Initial call to load GeoJSON data
         updateGeoJson();
-
+        
         // Set interval to update GeoJSON every 10 seconds
         setInterval(updateGeoJson, 2000);setInterval(updateGeoJson, 2000);
+        */
