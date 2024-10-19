@@ -1,7 +1,7 @@
 
 #map { 
-    height: 700px; 
-    width: auto;
+    height: 400px; 
+    width: 700px;
 }
 .leaflet-tooltip {
     background-color: rgba(255, 255, 255, 0.8);
@@ -28,6 +28,10 @@ body{
     background-color: #2B4141;
     color:#F6F4D2;
     font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     
 }
 
@@ -38,4 +42,12 @@ header h1{
 
 footer{
  text-align: center;   
+}
+#main_content {
+    width: 800px;
+    height:400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
