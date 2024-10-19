@@ -48,7 +48,7 @@
                     lines.forEach(line => {
                         const [name, lat, lng] = line.split(',');
                         if (name && lat && lng) {
-                            addFixedBuildingLabel(parseFloat(lat), parseFloat(lng), name).addTo(map);
+                            addFixedBuildingLabel(parseFloat(lat), parseFloat(lng), name.replace("|","")).addTo(map); // '|' is the delimiter for the data table
                         }
                     });
                 })
@@ -62,7 +62,7 @@
         setInterval(() => updateLabelsFromFile('labels.txt'), 2000);
 
         // The rest of your code (GeoJSON handling, etc.) remains unchanged
-        var geoJsonLayer;
+        //var geoJsonLayer;
         /*
         function updateGeoJson() {
             fetch('https://maps.byui.edu/portal/sharing/content/items/5e87a8a24ead45a9ad3ed37067b6bbfa/data')
