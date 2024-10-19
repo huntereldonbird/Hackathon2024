@@ -38,7 +38,7 @@
     
     <script>
         // Initialize the map centered on Rexburg
-        var map = L.map('map').setView([43.8231, -111.7924], 13);
+        var map = L.map('map').setView([43.81446342086511, -111.7847698378428], 19);
 
         // Add OpenStreetMap tile layer
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -65,18 +65,50 @@
             }).addTo(map);
         }
 
+
+
+
+
+
+        // Function to add text labels from a text file
+        function addTextLabelsFromFile(filePath) {
+            fetch(filePath)
+                .then(response => response.text())
+                .then(data => {
+                    const lines = data.split('\n');
+                    lines.forEach(line => {
+                        const [name, lat, lng] = line.split(',');
+                        if (name && lat && lng) {
+                            addTextLabel(parseFloat(lat), parseFloat(lng), name);
+                }
+            });
+        })
+                .catch(error => console.error('Error fetching text file:', error));
+        }
+
+        // Call the function to add text labels from the text file
+        
+
+        addTextLabelsFromFile('labels.txt')
+
+
+
+
+
+        /*
         // Add fixed building labels
         addFixedBuildingLabel(43.8181, -111.7814, 'BYU-Idaho Center');
         addFixedBuildingLabel(43.8189, -111.7838, 'Manwaring Center');
         addFixedBuildingLabel(43.8234, -111.7915, 'Madison County Courthouse');
         addFixedBuildingLabel(43.8307, -111.7829, 'Madison Memorial Hospital');
-        addFixedBuildingLabel(43.8183, -111.7932, 'Rexburg Idaho Temple');
+        addFixedBuildingLabel(43.8183, -111.7932, " place");
 
         // Add a marker for Rexburg city center
+        
         L.marker([43.8231, -111.7924]).addTo(map)
             .bindPopup('Rexburg City Center')
             .openPopup();
-
+        
         // Add a circle around Rexburg
         L.circle([43.8231, -111.7924], {
             color: 'red',
@@ -99,7 +131,17 @@
             [43.8270, -111.7880]
         ], {color: "green", weight: 1}).addTo(map).bindPopup('Smith Park');
 
+
+        // Add text labels for various locations
+        addTextLabel(43.8231, -111.7924, 'Rexburg');
+        addTextLabel(43.8167, -111.7814, 'BYU-Idaho');
+        addTextLabel(43.8280, -111.7895, 'Smith Park');
+        addTextLabel(43.8259, -111.7791, 'Porter Park');
+
         // Function to add text labels
+        
+        */
+
         function addTextLabel(lat, lng, text) {
             L.marker([lat, lng], {
                 icon: L.divIcon({
@@ -110,12 +152,7 @@
                 })
             }).addTo(map);
         }
-
-        // Add text labels for various locations
-        addTextLabel(43.8231, -111.7924, 'Rexburg');
-        addTextLabel(43.8167, -111.7814, 'BYU-Idaho');
-        addTextLabel(43.8280, -111.7895, 'Smith Park');
-        addTextLabel(43.8259, -111.7791, 'Porter Park');
+        
 
         var geoJsonLayer;
 
