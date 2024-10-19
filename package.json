@@ -1,0 +1,23 @@
+{
+  "name": "hackathon2024",
+  "version": "1.0.0",
+  "description": "https://huntereldonbird.github.io/Hackathon2024/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huntereldonbird/Hackathon2024.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huntereldonbird/Hackathon2024/issues"
+  },
+  "homepage": "https://github.com/huntereldonbird/Hackathon2024#readme",
+  "dependencies": {
+    "leaflet": "^1.9.4"
+  }
+}
