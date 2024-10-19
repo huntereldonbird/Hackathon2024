@@ -19,7 +19,7 @@
             var labelIcon = L.divIcon({
                 className: 'building-label',
                 html: text,
-                iconSize: [100, 20],
+                iconSize: [55, 35],
                 iconAnchor: [50, 10]
             });
             

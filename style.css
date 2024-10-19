@@ -11,7 +11,8 @@
 .building-label {
     position: absolute;
     transform: translate(-50%, -50%);
-    background-color: rgba(245, 161, 161, 0.7);
+    background-color: #F9F0DE;
+    color: #7E7D7A;
     padding: 2px 5px;
     border-radius: 3px;
     font-weight: bold;
@@ -52,5 +53,8 @@ footer{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #F9F0DE;
     
 }
