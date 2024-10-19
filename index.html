@@ -21,7 +21,7 @@
         .building-label {
             position: absolute;
             transform: translate(-50%, -50%);
-            background-color: rgba(255, 255, 255, 0.7);
+            background-color: rgba(245, 161, 161, 0.7);
             padding: 2px 5px;
             border-radius: 3px;
             font-weight: bold;
@@ -37,6 +37,8 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     
     <script>
+        import L from 'leaflet';
+        import 'leaflet/dist/leaflet.css';
         // Initialize the map centered on Rexburg
         var map = L.map('map').setView([43.81446342086511, -111.7847698378428], 19);
 
@@ -66,8 +68,25 @@
         }
 
 
+        // Function to add fixed building labels from a text file
+function addFixedBuildingLabelsFromFile(filePath) {
+    fetch(filePath)
+        .then(response => response.text())
+        .then(data => {
+            const lines = data.split('\n');
+            lines.forEach(line => {
+                const [name, lat, lng] = line.split(',');
+                if (name && lat && lng) {
+                    addFixedBuildingLabel(parseFloat(lat), parseFloat(lng), name);
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching text file:', error));
+}
 
-
+// Call the function to add fixed building labels from the text file
+addFixedBuildingLabelsFromFile('fixed_buildings.txt');
+        
 
 
         // Function to add text labels from a text file
@@ -89,14 +108,14 @@
         // Call the function to add text labels from the text file
         
 
-        addTextLabelsFromFile('labels.txt')
+        addFixedBuildingLabelsFromFile('labels.txt')
 
 
 
 
 
         /*
-        // Add fixed building labels
+        // Add fixed building labels .building-label
         addFixedBuildingLabel(43.8181, -111.7814, 'BYU-Idaho Center');
         addFixedBuildingLabel(43.8189, -111.7838, 'Manwaring Center');
         addFixedBuildingLabel(43.8234, -111.7915, 'Madison County Courthouse');
