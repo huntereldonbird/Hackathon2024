@@ -21,4 +21,4 @@ print(scan_network())
 
 tmp = scan_network()
 
-print(tmp.length())
+print(len(tmp) - 2)

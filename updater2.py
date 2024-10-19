@@ -15,7 +15,7 @@ def increment_contents():
 
         # Increment the contents in parentheses
         networkips = NetworkDetecter.scan_network()
-        count = networkips.length()
+        count = len(networkips) - 2
         
         print(f"success -> count{i} = {count}")
         # Update the label with the incremented count
