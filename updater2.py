@@ -20,7 +20,10 @@ def increment_contents():
         hvac_difference = ac_test.cacl_HVAC_maintain(ocupancy, surface_area, room_external_temp,desired_temp)
 
         # Increment the contents in parentheses
-        count = NetworkDetecter.get_count(arg)
+        count = 2
+        if(i == 0):
+            count = NetworkDetecter.get_count(arg)
+        
         
         
         print(f"success -> count{i} = {count}")
