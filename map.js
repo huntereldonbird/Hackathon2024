@@ -15,55 +15,8 @@ map.getPane('fixedLabels').style.pointerEvents = 'none';
 var labelMarkers = [];
 
 
-/*
-function createAndUpdateCSS(color, id) {
-    // Create a new <style> element
-    var styleElement = document.createElement('style');
-    console.log(document.getElementsByClassName("building-label"));
-    // Add the CSS rules to the <style> element
-    console.log("["+id +"]");
-    console.log(color);
-    console.log("");
-    styleElement.innerHTML = `
-        #${id} {
-            background-color: ${color};
-            
-        }
-    `;
-
-    // Append the <style> element to the <head> element
-    document.head.appendChild(styleElement);
-}
-
-
-*/
-
-
-
-
-    
-
-
-
-
-
-
-
-// Call the createAndUpdateCSS() function to create and update the CSS file
-
-
-
-
 // Function to add fixed building labels
 function addFixedBuildingLabel(lat, lng, text, insideText, color) {
-
-     // Get the existing .building-label element
-     //let buildingLabel = document.querySelector('.building-label');
-
-     // Modify the existing styles directly
-     //console.log(buildingLabel.color)
-
-
 
     var labelIcon = L.divIcon({
         className: 'building-label',
