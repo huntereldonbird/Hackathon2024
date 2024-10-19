@@ -32,6 +32,8 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    
     
 }
 
@@ -50,7 +52,5 @@ footer{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border-style: solid;
-    border-color: red;
-    border-width: 10px;
+    
 }
