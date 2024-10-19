@@ -1,5 +1,6 @@
 import time
 import NetworkDetecter
+import sys
 
 # Function to increment the contents in parentheses
 def increment_contents():
@@ -11,7 +12,7 @@ def increment_contents():
         label, latitude, longitude, inside = line.strip().split(',')
 
         # Increment the contents in parentheses
-        count = NetworkDetecter.get_number()
+        count = NetworkDetecter.get_count(arg)
         
         
         print(f"success -> count{i} = {count}")
@@ -28,3 +29,8 @@ def increment_contents():
 while True:
     increment_contents()
     time.sleep(2)
+
+
+if __name__ == "__main__":
+    arg = sys.argv[1]
+    print(arg)
