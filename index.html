@@ -6,7 +6,7 @@
     <title>Rexburg Map with Leaflet</title>
     
     <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     
     <style>
@@ -34,11 +34,7 @@
     <h1>Rexburg Map with Leaflet</h1>
     <div id="map"></div>
 
-    <!-- Leaflet JavaScript -->
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    
     <script>
-        
         // Initialize the map centered on Rexburg
         var map = L.map('map').setView([43.81446342086511, -111.7847698378428], 19);
 
@@ -52,6 +48,9 @@
         map.getPane('fixedLabels').style.zIndex = 650;
         map.getPane('fixedLabels').style.pointerEvents = 'none';
 
+        // Store all label markers
+        var labelMarkers = [];
+
         // Function to add fixed building labels
         function addFixedBuildingLabel(lat, lng, text) {
             var labelIcon = L.divIcon({
@@ -61,121 +60,47 @@
                 iconAnchor: [50, 10]
             });
             
-            L.marker([lat, lng], {
+            var marker = L.marker([lat, lng], {
                 icon: labelIcon,
                 pane: 'fixedLabels'
-            }).addTo(map);
+            });
+            
+            labelMarkers.push(marker);
+            return marker;
         }
 
+        // Function to clear all existing labels
+        function clearLabels() {
+            labelMarkers.forEach(marker => map.removeLayer(marker));
+            labelMarkers = [];
+        }
 
         // Function to add fixed building labels from a text file
-function addFixedBuildingLabelsFromFile(filePath) {
-    fetch(filePath)
-        .then(response => response.text())
-        .then(data => {
-            const lines = data.split('\n');
-            lines.forEach(line => {
-                const [name, lat, lng] = line.split(',');
-                if (name && lat && lng) {
-                    addFixedBuildingLabel(parseFloat(lat), parseFloat(lng), name);
-                }
-            });
-        })
-        .catch(error => console.error('Error fetching text file:', error));
-}
-
-// Call the function to add fixed building labels from the text file
-addFixedBuildingLabelsFromFile('fixed_buildings.txt');
-        
-
-
-        // Function to add text labels from a text file
-        function addTextLabelsFromFile(filePath) {
+        function updateLabelsFromFile(filePath) {
             fetch(filePath)
                 .then(response => response.text())
                 .then(data => {
+                    clearLabels(); // Clear existing labels
                     const lines = data.split('\n');
                     lines.forEach(line => {
                         const [name, lat, lng] = line.split(',');
                         if (name && lat && lng) {
-                            addTextLabel(parseFloat(lat), parseFloat(lng), name);
-                }
-            });
-        })
+                            addFixedBuildingLabel(parseFloat(lat), parseFloat(lng), name).addTo(map);
+                        }
+                    });
+                })
                 .catch(error => console.error('Error fetching text file:', error));
         }
 
-        // Call the function to add text labels from the text file
-        
+        // Initial call to add labels
+        updateLabelsFromFile('labels.txt');
 
-        addFixedBuildingLabelsFromFile('labels.txt')
+        // Set interval to update labels every 10 seconds
+        setInterval(() => updateLabelsFromFile('labels.txt'), 10000);
 
-
-
-
-
-        /*
-        // Add fixed building labels .building-label
-        addFixedBuildingLabel(43.8181, -111.7814, 'BYU-Idaho Center');
-        addFixedBuildingLabel(43.8189, -111.7838, 'Manwaring Center');
-        addFixedBuildingLabel(43.8234, -111.7915, 'Madison County Courthouse');
-        addFixedBuildingLabel(43.8307, -111.7829, 'Madison Memorial Hospital');
-        addFixedBuildingLabel(43.8183, -111.7932, " place");
-
-        // Add a marker for Rexburg city center
-        
-        L.marker([43.8231, -111.7924]).addTo(map)
-            .bindPopup('Rexburg City Center')
-            .openPopup();
-        
-        // Add a circle around Rexburg
-        L.circle([43.8231, -111.7924], {
-            color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.2,
-            radius: 1000
-        }).addTo(map).bindPopup('1km radius around Rexburg');
-
-        // Add a polygon for BYU-Idaho campus (approximate)
-        L.polygon([
-            [43.8181, -111.7838],
-            [43.8181, -111.7788],
-            [43.8153, -111.7788],
-            [43.8153, -111.7838]
-        ]).addTo(map).bindPopup('BYU-Idaho Campus');
-
-        // Add a rectangle for Smith Park
-        L.rectangle([
-            [43.8289, -111.7910],
-            [43.8270, -111.7880]
-        ], {color: "green", weight: 1}).addTo(map).bindPopup('Smith Park');
-
-
-        // Add text labels for various locations
-        addTextLabel(43.8231, -111.7924, 'Rexburg');
-        addTextLabel(43.8167, -111.7814, 'BYU-Idaho');
-        addTextLabel(43.8280, -111.7895, 'Smith Park');
-        addTextLabel(43.8259, -111.7791, 'Porter Park');
-
-        // Function to add text labels
-        
-        */
-
-        function addTextLabel(lat, lng, text) {
-            L.marker([lat, lng], {
-                icon: L.divIcon({
-                    className: 'text-label',
-                    html: text,
-                    iconSize: [100, 20],
-                    iconAnchor: [50, 10]
-                })
-            }).addTo(map);
-        }
-        
-
+        // The rest of your code (GeoJSON handling, etc.) remains unchanged
         var geoJsonLayer;
 
-        // Function to fetch and update GeoJSON data
         function updateGeoJson() {
             fetch('/your-api-endpoint')
                 .then(response => response.json())
@@ -209,8 +134,3 @@ addFixedBuildingLabelsFromFile('fixed_buildings.txt');
     </script>
 </body>
 </html>
-
-
-
-
-
