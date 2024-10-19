@@ -8,10 +8,7 @@ def increment_contents():
 
     for i, line in enumerate(lines):
         # Split the line into label and coordinates
-        label, latitude, longitude = line.strip().split(',')
-
-        # Remove any single quotes from the label
-        label = label.replace("'", "")
+        label, latitude, longitude, inside = line.strip().split(',')
 
         # Increment the contents in parentheses
         count = NetworkDetecter.get_number()
@@ -22,7 +19,7 @@ def increment_contents():
         new_label = label.split('|')[0] + '|' + str(count)
 
         # Write the updated label and coordinates back to the file
-        lines[i] = new_label + ',' + latitude + ',' + longitude + '\n'
+        lines[i] = new_label + ',' + latitude + ',' + longitude + "," + inside + '\n'
 
     with open('labels.txt', 'w') as file:
         file.writelines(lines)
