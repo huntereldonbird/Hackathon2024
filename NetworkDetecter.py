@@ -9,10 +9,26 @@ def scan_network():
             parts = line.split()
             ip = parts[0]
             mac = parts[1]
-            devices.append((ip))
+            devices.append(ip)
     return devices
 
-def get_number():
-    net = scan_network()
+
+
+def Get_Devices_From_AP(net):
+    devices = []
+    result = subprocess.run(["sudo", "arp-scan", net], capture_output=True, text=True)
+
+    for line in result.stdout.split("\n"):
+        if(net) in line:
+            parts = line.split()
+            ip = parts[0]
+            mac = parts[1]
+            devices.append(ip)
+
+    return devices
+
+
+def get_number(net):
+    net = scan_network(net)
     count = len(net) - 2
     return count
