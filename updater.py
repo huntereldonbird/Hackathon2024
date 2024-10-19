@@ -14,8 +14,8 @@ def increment_contents():
 
         # Increment the contents in parentheses
         count = int(label.split(' ')[-1])
-        count += 1
-
+        count += 3
+        print(f"success -> count = {count}")
         # Update the label with the incremented count
         new_label = label.split(' ')[0] + ' ' + str(count)
 
@@ -28,5 +28,4 @@ def increment_contents():
 # Run the increment function every 5 seconds
 while True:
     increment_contents()
-    print("success")
     time.sleep(2)
