@@ -93,7 +93,7 @@
         updateGeoJson();
 
         // Set interval to update GeoJSON every 10 seconds
-        / Initialize the map centered on Rexburg
+        // Initialize the map centered on Rexburg
                 var map = L.map('map').setView([43.81446342086511, -111.7847698378428], 19);
         
                 // Add OpenStreetMap tile layer
@@ -188,7 +188,7 @@
                 updateGeoJson();
         
                 // Set interval to update GeoJSON every 10 seconds
-                setInterval(updateGeoJson, 2000);/ Initialize the map centered on Rexburg
+                setInterval(updateGeoJson, 2000);// Initialize the map centered on Rexburg
                         var map = L.map('map').setView([43.81446342086511, -111.7847698378428], 19);
                 
                         // Add OpenStreetMap tile layer
@@ -283,7 +283,7 @@
                         updateGeoJson();
                 
                         // Set interval to update GeoJSON every 10 seconds
-                        setInterval(updateGeoJson, 2000);/ Initialize the map centered on Rexburg
+                        setInterval(updateGeoJson, 2000);// Initialize the map centered on Rexburg
                                 var map = L.map('map').setView([43.81446342086511, -111.7847698378428], 19);
                         
                                 // Add OpenStreetMap tile layer
@@ -378,7 +378,7 @@
                                 updateGeoJson();
                         
                                 // Set interval to update GeoJSON every 10 seconds
-                                setInterval(updateGeoJson, 2000);/ Initialize the map centered on Rexburg
+                                setInterval(updateGeoJson, 2000);// Initialize the map centered on Rexburg
                                         var map = L.map('map').setView([43.81446342086511, -111.7847698378428], 19);
                                 
                                         // Add OpenStreetMap tile layer
