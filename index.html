@@ -95,8 +95,8 @@
         // Initial call to add labels
         updateLabelsFromFile('labels.txt');
 
-        // Set interval to update labels every 10 seconds
-        setInterval(() => updateLabelsFromFile('labels.txt'), 10000);
+        // Set interval to update labels every 2 seconds
+        setInterval(() => updateLabelsFromFile('labels.txt'), 2000);
 
         // The rest of your code (GeoJSON handling, etc.) remains unchanged
         var geoJsonLayer;
@@ -130,7 +130,7 @@
         updateGeoJson();
 
         // Set interval to update GeoJSON every 10 seconds
-        setInterval(updateGeoJson, 10000);
+        setInterval(updateGeoJson, 2000);
     </script>
 </body>
 </html>
