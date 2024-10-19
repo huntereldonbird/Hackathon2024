@@ -17,3 +17,8 @@ def scan_network():
 
 
 print(scan_network())
+
+
+tmp = scan_network()
+
+print(tmp.length())
